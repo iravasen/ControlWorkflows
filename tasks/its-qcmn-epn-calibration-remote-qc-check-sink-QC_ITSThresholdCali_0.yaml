@@ -111,7 +111,7 @@ command:
     - "--spawners"
     - "'1'"
     - "--stacktrace-on-signal"
-    - "'simple'"
+    - "'all'"
     - "--timeframes-rate-limit"
     - "'0'"
     - "--timeframes-rate-limit-ipcid"
