@@ -1,7 +1,10 @@
 name: its-qcmn-epn-calibration-remote-qc-check-sink-QC_ITSThresholdCali_0
 defaults:
   log_task_output: none
+<<<<<<< HEAD
   exit_transition_timeout: 15
+=======
+>>>>>>> added yamls produced by running scripts
   _module_cmdline: >-
     source /etc/profile.d/modules.sh && MODULEPATH={{ modulepath }} module load O2 QualityControl Control-OCCPlugin &&
     {{ dpl_command }} | o2-qc
@@ -16,15 +19,11 @@ bind:
 command:
   shell: true
   log: "{{ log_task_output }}"
-  env:
-    - O2_DETECTOR={{ detector }}
-    - O2_PARTITION={{ environment_id }}
+  env: ["O2_DETECTOR={{ detector }}"]
   user: "{{ user }}"
   value: "{{ len(modulepath)>0 ? _module_cmdline : _plain_cmdline }}"
   arguments:
     - "-b"
-    - "--exit-transition-timeout"
-    - "'{{ exit_transition_timeout }}'"
     - "--monitoring-backend"
     - "'{{ monitoring_dpl_url }}'"
     - "--session"
@@ -111,7 +110,7 @@ command:
     - "--spawners"
     - "'1'"
     - "--stacktrace-on-signal"
-    - "'simple'"
+    - "'all'"
     - "--timeframes-rate-limit"
     - "'0'"
     - "--timeframes-rate-limit-ipcid"
