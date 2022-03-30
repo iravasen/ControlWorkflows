@@ -50,7 +50,6 @@
   "dataSamplingPolicies": [
     {
       "id" : "itscalib",
-      "id" : "thresholdcalibration",
       "active" : "true",
       "machines" : [],
       "query" : "tunestring:ITS/TSTR/0;runtype:ITS/RUNT/0;scantype:ITS/SCANT/0",
