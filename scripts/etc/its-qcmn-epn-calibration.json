@@ -33,7 +33,7 @@
         "dataSource_comment" : "The other type of dataSource is \"direct\", see basic-no-sampling.json.",
         "dataSource" : {
           "type" : "dataSamplingPolicy",
-          "name" : "thresholdcalibration"
+          "name" : "itscalib"
         },
         "location" : "local",
         "taskParameters" : {},
@@ -48,7 +48,7 @@
   },
   "dataSamplingPolicies": [
     {
-      "id" : "thresholdcalibration",
+      "id" : "itscalib",
       "active" : "true",
       "machines" : [],
       "query" : "tunestring:ITS/TSTR/0;runtype:ITS/RUNT/0;scantype:ITS/SCANT/0",
