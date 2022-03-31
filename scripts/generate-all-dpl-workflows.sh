@@ -86,6 +86,7 @@ check_pwd
 ./its-qcmn-epn.sh
 ./its-qcmn-flp-epn-no-ds-nocluster.sh
 ./its-qcmn-epn-calibration.sh
+./its-qcmn-epn-calibration-fee.sh
 ./mch-qcmn-flp-digits.sh
 ./mch-qcmn-epn-digits.sh
 ./mft-decoder.sh

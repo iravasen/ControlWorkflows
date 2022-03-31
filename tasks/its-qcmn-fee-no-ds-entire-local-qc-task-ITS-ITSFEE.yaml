@@ -1,4 +1,4 @@
-name: its-qcmn-epn-calibration-remote-MERGER-ITSThresholdCalibrationTask1l-0
+name: its-qcmn-fee-no-ds-entire-local-qc-task-ITS-ITSFEE
 defaults:
   log_task_output: none
   exit_transition_timeout: 15
@@ -13,13 +13,22 @@ wants:
   cpu: 0.01
   memory: 1
 bind:
-  - name: from_MERGER-ITSThresholdCalibrationTask1l-0_to_qc-check-sink-QC_ITSThresholdCali_0
+  - name: from_qc-task-ITS-ITSFEE_to_ITSFEE-proxy
     type: push
     transport: shmem
     addressing: ipc
     rateLogging: "{{ fmq_rate_logging }}"
     sndBufSize: 4
     rcvBufSize: 4
+  - name: from_qc-task-ITS-ITSFEE_to_dpl-output-proxy
+    type: push
+    transport: shmem
+    addressing: ipc
+    rateLogging: "{{ fmq_rate_logging }}"
+    sndBufSize: 4
+    rcvBufSize: 4
+properties:
+  qcConfiguration: ""
 command:
   shell: true
   log: "{{ log_task_output }}"
@@ -49,7 +58,7 @@ command:
     - "--resources-monitoring"
     - "'{{ resources_monitoring }}'"
     - "--id"
-    - "'MERGER-ITSThresholdCalibrationTask1l-0'"
+    - "'qc-task-ITS-ITSFEE'"
     - "--shm-monitor"
     - "'false'"
     - "--log-color"
@@ -87,9 +96,10 @@ command:
     - "--forwarding-policy"
     - "'dangling'"
     - "--host"
-    - "''"
+    - "'alio2-cr1-flp187'"
     - "--labels"
     - "''"
+    - "--local"
     - "--local-batch"
     - "''"
     - "--override-values"
@@ -98,7 +108,6 @@ command:
     - "''"
     - "--readers"
     - "'1'"
-    - "--remote"
     - "--remote-batch"
     - "''"
     - "--severity"
@@ -125,5 +134,7 @@ command:
     - "-1"
     - "--workflow-suffix"
     - "''"
-    - "--period-timer-publish"
-    - "'60000000'"
+    - "--period-timer-cycle"
+    - "'30000000'"
+    - "--qcConfiguration"
+    - "'{}'"
