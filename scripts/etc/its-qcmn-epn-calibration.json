@@ -51,7 +51,7 @@
       "id" : "itscalib",
       "active" : "true",
       "machines" : [],
-      "query" : "tunestring:ITS/TSTR;runtype:ITS/RUNT;scantype:ITS/SCANT",
+      "query" : "tunestring:ITS/TSTR;runtype:ITS/RUNT;scantype:ITS/SCANT;chipdonestring:ITS/QCSTR",
       "samplingConditions" : [
         {
           "condition" : "random",
