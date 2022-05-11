@@ -50,22 +50,22 @@ roles:
       rcvBufSize: 4
     task:
       load: mft-raw-direct-qcmn-local-qc-task-MFT-QcMFTReadoutTask
-  - name: "MFT-QcMFTReadoutTask-proxy"
+  - name: "QcMFTReadoutTask-proxy"
     connect:
-    - name: from_qc-task-MFT-QcMFTReadoutTask_to_MFT-QcMFTReadoutTask-proxy
+    - name: from_qc-task-MFT-QcMFTReadoutTask_to_QcMFTReadoutTask-proxy
       type: pull
       transport: shmem
-      target: "{{ Parent().Path }}.qc-task-MFT-QcMFTReadoutTask:from_qc-task-MFT-QcMFTReadoutTask_to_MFT-QcMFTReadoutTask-proxy"
+      target: "{{ Parent().Path }}.qc-task-MFT-QcMFTReadoutTask:from_qc-task-MFT-QcMFTReadoutTask_to_QcMFTReadoutTask-proxy"
       rateLogging: "{{ fmq_rate_logging }}"
       sndBufSize: 4
       rcvBufSize: 4
-    - name: MFT-QcMFTReadoutTask-proxy
+    - name: QcMFTReadoutTask-proxy
       type: pub
       transport: zeromq
-      target: "::MFT-QcMFTReadoutTask-proxy"
+      target: "::QcMFTReadoutTask-proxy"
       rateLogging: "{{ fmq_rate_logging }}"
     task:
-      load: mft-raw-direct-qcmn-local-MFT-QcMFTReadoutTask-proxy
+      load: mft-raw-direct-qcmn-local-QcMFTReadoutTask-proxy
   - name: "dpl-output-proxy"
     connect:
     - name: from_readout-proxy_to_dpl-output-proxy

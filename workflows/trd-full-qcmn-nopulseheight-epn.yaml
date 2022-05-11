@@ -16,120 +16,120 @@ roles:
     connect:
     task:
       load: trd-full-qcmn-nopulseheight-epn-internal-dpl-clock
-  - name: "TRD-DigitTask-proxy"
+  - name: "DigitTask-proxy"
     connect:
-    - name: from_internal-dpl-clock_to_TRD-DigitTask-proxy
+    - name: from_internal-dpl-clock_to_DigitTask-proxy
       type: pull
       transport: shmem
-      target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_TRD-DigitTask-proxy"
+      target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_DigitTask-proxy"
       rateLogging: "{{ fmq_rate_logging }}"
       sndBufSize: 4
       rcvBufSize: 4
     bind:
-    - name: TRD-DigitTask-proxy
+    - name: DigitTask-proxy
       type: sub
       transport: zeromq
       addressing: tcp
       rateLogging: "{{ fmq_rate_logging }}"
       target: "tcp://*:47743"
     task:
-      load: trd-full-qcmn-nopulseheight-epn-TRD-DigitTask-proxy
-  - name: "TRD-RawDataTask-proxy"
+      load: trd-full-qcmn-nopulseheight-epn-DigitTask-proxy
+  - name: "RawDataTask-proxy"
     connect:
-    - name: from_internal-dpl-clock_to_TRD-RawDataTask-proxy
+    - name: from_internal-dpl-clock_to_RawDataTask-proxy
       type: pull
       transport: shmem
-      target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_TRD-RawDataTask-proxy"
+      target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_RawDataTask-proxy"
       rateLogging: "{{ fmq_rate_logging }}"
       sndBufSize: 4
       rcvBufSize: 4
     bind:
-    - name: TRD-RawDataTask-proxy
+    - name: RawDataTask-proxy
       type: sub
       transport: zeromq
       addressing: tcp
       rateLogging: "{{ fmq_rate_logging }}"
       target: "tcp://*:47742"
     task:
-      load: trd-full-qcmn-nopulseheight-epn-TRD-RawDataTask-proxy
-  - name: "TRD-TrackletsTask-proxy"
+      load: trd-full-qcmn-nopulseheight-epn-RawDataTask-proxy
+  - name: "TrackletsTask-proxy"
     connect:
-    - name: from_internal-dpl-clock_to_TRD-TrackletsTask-proxy
+    - name: from_internal-dpl-clock_to_TrackletsTask-proxy
       type: pull
       transport: shmem
-      target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_TRD-TrackletsTask-proxy"
+      target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_TrackletsTask-proxy"
       rateLogging: "{{ fmq_rate_logging }}"
       sndBufSize: 4
       rcvBufSize: 4
     bind:
-    - name: TRD-TrackletsTask-proxy
+    - name: TrackletsTask-proxy
       type: sub
       transport: zeromq
       addressing: tcp
       rateLogging: "{{ fmq_rate_logging }}"
       target: "tcp://*:47744"
     task:
-      load: trd-full-qcmn-nopulseheight-epn-TRD-TrackletsTask-proxy
-  - name: "TRD-MERGER-DigitTask1l-0"
+      load: trd-full-qcmn-nopulseheight-epn-TrackletsTask-proxy
+  - name: "MERGER-DigitTask1l-0"
     connect:
-    - name: from_internal-dpl-clock_to_TRD-MERGER-DigitTask1l-0
+    - name: from_internal-dpl-clock_to_MERGER-DigitTask1l-0
       type: pull
       transport: shmem
-      target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_TRD-MERGER-DigitTask1l-0"
+      target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_MERGER-DigitTask1l-0"
       rateLogging: "{{ fmq_rate_logging }}"
       sndBufSize: 4
       rcvBufSize: 4
-    - name: from_TRD-DigitTask-proxy_to_TRD-MERGER-DigitTask1l-0
+    - name: from_DigitTask-proxy_to_MERGER-DigitTask1l-0
       type: pull
       transport: shmem
-      target: "{{ Parent().Path }}.TRD-DigitTask-proxy:from_TRD-DigitTask-proxy_to_TRD-MERGER-DigitTask1l-0"
+      target: "{{ Parent().Path }}.DigitTask-proxy:from_DigitTask-proxy_to_MERGER-DigitTask1l-0"
       rateLogging: "{{ fmq_rate_logging }}"
       sndBufSize: 4
       rcvBufSize: 4
     task:
-      load: trd-full-qcmn-nopulseheight-epn-TRD-MERGER-DigitTask1l-0
-  - name: "TRD-MERGER-RawDataTask1l-0"
+      load: trd-full-qcmn-nopulseheight-epn-MERGER-DigitTask1l-0
+  - name: "MERGER-RawDataTask1l-0"
     connect:
-    - name: from_internal-dpl-clock_to_TRD-MERGER-RawDataTask1l-0
+    - name: from_internal-dpl-clock_to_MERGER-RawDataTask1l-0
       type: pull
       transport: shmem
-      target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_TRD-MERGER-RawDataTask1l-0"
+      target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_MERGER-RawDataTask1l-0"
       rateLogging: "{{ fmq_rate_logging }}"
       sndBufSize: 4
       rcvBufSize: 4
-    - name: from_TRD-RawDataTask-proxy_to_TRD-MERGER-RawDataTask1l-0
+    - name: from_RawDataTask-proxy_to_MERGER-RawDataTask1l-0
       type: pull
       transport: shmem
-      target: "{{ Parent().Path }}.TRD-RawDataTask-proxy:from_TRD-RawDataTask-proxy_to_TRD-MERGER-RawDataTask1l-0"
+      target: "{{ Parent().Path }}.RawDataTask-proxy:from_RawDataTask-proxy_to_MERGER-RawDataTask1l-0"
       rateLogging: "{{ fmq_rate_logging }}"
       sndBufSize: 4
       rcvBufSize: 4
     task:
-      load: trd-full-qcmn-nopulseheight-epn-TRD-MERGER-RawDataTask1l-0
-  - name: "TRD-MERGER-TrackletsTask1l-0"
+      load: trd-full-qcmn-nopulseheight-epn-MERGER-RawDataTask1l-0
+  - name: "MERGER-TrackletsTask1l-0"
     connect:
-    - name: from_internal-dpl-clock_to_TRD-MERGER-TrackletsTask1l-0
+    - name: from_internal-dpl-clock_to_MERGER-TrackletsTask1l-0
       type: pull
       transport: shmem
-      target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_TRD-MERGER-TrackletsTask1l-0"
+      target: "{{ Parent().Path }}.internal-dpl-clock:from_internal-dpl-clock_to_MERGER-TrackletsTask1l-0"
       rateLogging: "{{ fmq_rate_logging }}"
       sndBufSize: 4
       rcvBufSize: 4
-    - name: from_TRD-TrackletsTask-proxy_to_TRD-MERGER-TrackletsTask1l-0
+    - name: from_TrackletsTask-proxy_to_MERGER-TrackletsTask1l-0
       type: pull
       transport: shmem
-      target: "{{ Parent().Path }}.TRD-TrackletsTask-proxy:from_TRD-TrackletsTask-proxy_to_TRD-MERGER-TrackletsTask1l-0"
+      target: "{{ Parent().Path }}.TrackletsTask-proxy:from_TrackletsTask-proxy_to_MERGER-TrackletsTask1l-0"
       rateLogging: "{{ fmq_rate_logging }}"
       sndBufSize: 4
       rcvBufSize: 4
     task:
-      load: trd-full-qcmn-nopulseheight-epn-TRD-MERGER-TrackletsTask1l-0
+      load: trd-full-qcmn-nopulseheight-epn-MERGER-TrackletsTask1l-0
   - name: "qc-check-sink-QC_DigitTask_0"
     connect:
-    - name: from_TRD-MERGER-DigitTask1l-0_to_qc-check-sink-QC_DigitTask_0
+    - name: from_MERGER-DigitTask1l-0_to_qc-check-sink-QC_DigitTask_0
       type: pull
       transport: shmem
-      target: "{{ Parent().Path }}.TRD-MERGER-DigitTask1l-0:from_TRD-MERGER-DigitTask1l-0_to_qc-check-sink-QC_DigitTask_0"
+      target: "{{ Parent().Path }}.MERGER-DigitTask1l-0:from_MERGER-DigitTask1l-0_to_qc-check-sink-QC_DigitTask_0"
       rateLogging: "{{ fmq_rate_logging }}"
       sndBufSize: 4
       rcvBufSize: 4
@@ -137,10 +137,10 @@ roles:
       load: trd-full-qcmn-nopulseheight-epn-qc-check-sink-QC_DigitTask_0
   - name: "qc-check-sink-QC_RawDataTask_0"
     connect:
-    - name: from_TRD-MERGER-RawDataTask1l-0_to_qc-check-sink-QC_RawDataTask_0
+    - name: from_MERGER-RawDataTask1l-0_to_qc-check-sink-QC_RawDataTask_0
       type: pull
       transport: shmem
-      target: "{{ Parent().Path }}.TRD-MERGER-RawDataTask1l-0:from_TRD-MERGER-RawDataTask1l-0_to_qc-check-sink-QC_RawDataTask_0"
+      target: "{{ Parent().Path }}.MERGER-RawDataTask1l-0:from_MERGER-RawDataTask1l-0_to_qc-check-sink-QC_RawDataTask_0"
       rateLogging: "{{ fmq_rate_logging }}"
       sndBufSize: 4
       rcvBufSize: 4
@@ -148,10 +148,10 @@ roles:
       load: trd-full-qcmn-nopulseheight-epn-qc-check-sink-QC_RawDataTask_0
   - name: "qc-check-sink-QC_TrackletsTask_0"
     connect:
-    - name: from_TRD-MERGER-TrackletsTask1l-0_to_qc-check-sink-QC_TrackletsTask_0
+    - name: from_MERGER-TrackletsTask1l-0_to_qc-check-sink-QC_TrackletsTask_0
       type: pull
       transport: shmem
-      target: "{{ Parent().Path }}.TRD-MERGER-TrackletsTask1l-0:from_TRD-MERGER-TrackletsTask1l-0_to_qc-check-sink-QC_TrackletsTask_0"
+      target: "{{ Parent().Path }}.MERGER-TrackletsTask1l-0:from_MERGER-TrackletsTask1l-0_to_qc-check-sink-QC_TrackletsTask_0"
       rateLogging: "{{ fmq_rate_logging }}"
       sndBufSize: 4
       rcvBufSize: 4

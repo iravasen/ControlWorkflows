@@ -1,7 +1,6 @@
 name: tpc-full-nodummy-qcmn-remote-qc-check-sink-QC_Tracks_0
 defaults:
   log_task_output: none
-  exit_transition_timeout: 15
   _module_cmdline: >-
     source /etc/profile.d/modules.sh && MODULEPATH={{ modulepath }} module load O2 QualityControl Control-OCCPlugin &&
     {{ dpl_command }} | o2-qc
@@ -18,15 +17,11 @@ properties:
 command:
   shell: true
   log: "{{ log_task_output }}"
-  env:
-    - O2_DETECTOR={{ detector }}
-    - O2_PARTITION={{ environment_id }}
+  env: ["O2_DETECTOR={{ detector }}"]
   user: "{{ user }}"
   value: "{{ len(modulepath)>0 ? _module_cmdline : _plain_cmdline }}"
   arguments:
     - "-b"
-    - "--exit-transition-timeout"
-    - "'{{ exit_transition_timeout }}'"
     - "--monitoring-backend"
     - "'{{ monitoring_dpl_url }}'"
     - "--session"
@@ -106,8 +101,6 @@ command:
     - "'false'"
     - "--shm-mlock-segment-on-creation"
     - "'false'"
-    - "--shm-no-cleanup"
-    - "'false'"
     - "--shm-segment-id"
     - "'0'"
     - "--shm-zero-segment"
@@ -115,7 +108,7 @@ command:
     - "--spawners"
     - "'1'"
     - "--stacktrace-on-signal"
-    - "'simple'"
+    - "'all'"
     - "--timeframes-rate-limit"
     - "'0'"
     - "--timeframes-rate-limit-ipcid"
