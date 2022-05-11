@@ -1,4 +1,4 @@
-name: its-qcmn-epn-calibration-remote-internal-dpl-clock
+name: its-qcmn-epn-calibration-remote-ITS-ITSThresholdCalibrationTask-proxy
 defaults:
   log_task_output: none
   exit_transition_timeout: 15
@@ -13,20 +13,19 @@ wants:
   cpu: 0.01
   memory: 1
 bind:
-  - name: from_internal-dpl-clock_to_ITS-ITSThresholdCalibrationTask-proxy
+  - name: from_ITS-ITSThresholdCalibrationTask-proxy_to_ITS-MERGER-ITSThresholdCalibrationTask1l-0
     type: push
     transport: shmem
     addressing: ipc
     rateLogging: "{{ fmq_rate_logging }}"
     sndBufSize: 4
     rcvBufSize: 4
-  - name: from_internal-dpl-clock_to_ITS-MERGER-ITSThresholdCalibrationTask1l-0
-    type: push
-    transport: shmem
-    addressing: ipc
+  - name: ITS-ITSThresholdCalibrationTask-proxy
+    type: sub
+    transport: zeromq
+    addressing: tcp
     rateLogging: "{{ fmq_rate_logging }}"
-    sndBufSize: 4
-    rcvBufSize: 4
+    target: "tcp://*:47706"
 command:
   shell: true
   log: "{{ log_task_output }}"
@@ -56,7 +55,7 @@ command:
     - "--resources-monitoring"
     - "'{{ resources_monitoring }}'"
     - "--id"
-    - "'internal-dpl-clock'"
+    - "'ITS-ITSThresholdCalibrationTask-proxy'"
     - "--shm-monitor"
     - "'false'"
     - "--log-color"
@@ -132,3 +131,13 @@ command:
     - "-1"
     - "--workflow-suffix"
     - "''"
+    - "--end-value-enumeration"
+    - "-1"
+    - "--orbit-multiplier-enumeration"
+    - "'0'"
+    - "--orbit-offset-enumeration"
+    - "'0'"
+    - "--start-value-enumeration"
+    - "'0'"
+    - "--step-value-enumeration"
+    - "'1'"
